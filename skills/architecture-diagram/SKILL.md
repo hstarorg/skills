@@ -25,6 +25,8 @@ Use these semantic colors for component types:
 | Message Bus | `rgba(251, 146, 60, 0.3)` | `#fb923c` (orange-400) |
 | External/Generic | `rgba(30, 41, 59, 0.5)` | `#94a3b8` (slate-400) |
 
+Prefer semantic roles when applicable: access/cyan, control/amber, business/emerald, data or ledger/violet, security/rose, operations/slate, and platform or messaging/orange. If the user requests a monochrome theme, preserve role separation through hue, lightness, saturation, and fill contrast while keeping primary text white and secondary text neutral.
+
 ### Typography
 
 Use JetBrains Mono for all text (monospace, technical aesthetic):
@@ -92,6 +94,18 @@ Component B: y=170, height=60  → ends at y=230
 **Wrong:** Placing a message bus at y=160 when Component B starts at y=170 (causes overlap)
 **Right:** Placing a message bus at y=140, centered in the 40px gap (y=130 to y=170)
 
+### Architecture Semantics and Layout
+
+- Before drawing, identify containment, the primary flow, control or rule flows, and shared dependencies.
+- Use arrows only for real calls, data movement, or transactions, with direction matching the actual initiator. Keep auxiliary participants out of the primary chain unless they are true serial steps.
+- Represent a shared runtime, framework, or infrastructure dependency as a labeled dashed domain. Do not add redundant dependency arrows from every contained node, and do not omit real calls between nodes inside the domain.
+- Establish a whole-diagram grid before placing components. Align major components across layers where practical; make peer components equal in size and distribute each row with aligned edges and equal gaps.
+- Keep parallel regions visually symmetric. Give more space to layers with more nodes or connector complexity, and place edge participants toward the sides when that reduces congestion.
+- Define top, bottom, left, and right anchors for each component. Connect only to component edges, region boundaries, or explicit anchors.
+- Prefer horizontal, vertical, and rounded orthogonal paths. Keep parallel routes distinguishable and prevent connectors from crossing text or hiding arrowheads.
+- Use solid lines for primary flows, dashed lines for control flows, rose dashed lines for security or audit relationships, and dashed boundaries without connector lines for shared dependencies.
+- Draw connectors before components and use opaque component underlays to mask lines behind semi-transparent fills. Labels should name the relationship, remain short, and sit clear of boundaries and connectors.
+
 ### Legend Placement
 
 **CRITICAL:** Place legends OUTSIDE all boundary boxes (region boundaries, cluster boundaries, security groups).
@@ -109,6 +123,10 @@ SVG viewBox height: at least 560 to fit legend
 
 **Wrong:** Legend at y=470 inside a cluster boundary that ends at y=490
 **Right:** Legend at y=510, below the cluster boundary, with viewBox height extended
+
+### Visual Verification
+
+Render the HTML after every layout or semantic change. Before delivery, verify alignment, equal peer sizing, even spacing, correct arrow direction and endpoints, absence of blank-target connectors, text and line clearance, unobstructed arrowheads, legend placement outside all boundaries, and legibility at normal and reduced browser zoom. When architecture semantics change, keep the legend, summary cards, and accompanying description consistent with the diagram.
 
 ### Layout Structure
 
@@ -172,6 +190,6 @@ Copy and customize the template at `resources/template.html`. Key customization 
 Always produce a single self-contained `.html` file with:
 - Embedded CSS (no external stylesheets except Google Fonts)
 - Inline SVG (no external images)
-- No JavaScript required (pure CSS animations)
+- No JavaScript dependencies beyond the template's built-in export libraries
 
 The file should render correctly when opened directly in any modern browser. The export toolbar uses two CDN scripts (html2canvas and jsPDF) — no other JavaScript dependencies.
