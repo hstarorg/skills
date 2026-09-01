@@ -13,7 +13,13 @@ Reusable agent skills for engineering workflows.
 └── LICENSE
 ```
 
-`skills/` and `evals/` intentionally contain no examples yet.
+## Available skills
+
+Only skills currently present under `skills/` are listed here. When a skill is adapted from another project, its upstream source and license are noted below; local behavior may differ from upstream.
+
+| Skill | Description | Source |
+| --- | --- | --- |
+| [`architecture-diagram`](skills/architecture-diagram/) | Create polished dark-themed system, infrastructure, cloud, security, and network architecture diagrams as self-contained HTML with inline SVG. | Adapted from [Cocoon AI's architecture-diagram-generator](https://github.com/Cocoon-AI/architecture-diagram-generator) (MIT); enhanced locally. |
 
 ## Skill contract
 
