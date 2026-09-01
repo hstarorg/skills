@@ -102,9 +102,12 @@ Component B: y=170, height=60  → ends at y=230
 - Establish a whole-diagram grid before placing components. Align major components across layers where practical; make peer components equal in size and distribute each row with aligned edges and equal gaps.
 - Keep parallel regions visually symmetric. Give more space to layers with more nodes or connector complexity, and place edge participants toward the sides when that reduces congestion.
 - Define top, bottom, left, and right anchors for each component. Connect only to component edges, region boundaries, or explicit anchors.
+- Prefer facing anchors: same-row flows connect side-to-side; stacked flows connect top-to-bottom.
+- The final segment must enter the target edge perpendicularly, without hooks, backtracking, gaps, or overshoot.
 - Prefer horizontal, vertical, and rounded orthogonal paths. Keep parallel routes distinguishable and prevent connectors from crossing text or hiding arrowheads.
 - Use solid lines for primary flows, dashed lines for control flows, rose dashed lines for security or audit relationships, and dashed boundaries without connector lines for shared dependencies.
 - Draw connectors before components and use opaque component underlays to mask lines behind semi-transparent fills. Labels should name the relationship, remain short, and sit clear of boundaries and connectors.
+- Keep all text inside its component with visible padding; shorten, wrap, or enlarge the box rather than crossing its border.
 
 ### Legend Placement
 
@@ -126,7 +129,7 @@ SVG viewBox height: at least 560 to fit legend
 
 ### Visual Verification
 
-Render the HTML after every layout or semantic change. Before delivery, verify alignment, equal peer sizing, even spacing, correct arrow direction and endpoints, absence of blank-target connectors, text and line clearance, unobstructed arrowheads, legend placement outside all boundaries, and legibility at normal and reduced browser zoom. When architecture semantics change, keep the legend, summary cards, and accompanying description consistent with the diagram.
+Render the HTML after every layout or semantic change. Before delivery, verify alignment, equal peer sizing, even spacing, correct arrow direction, target anchor, and final entry direction, absence of blank-target connectors, text contained within component boundaries and clear of lines, unobstructed arrowheads, legend placement outside all boundaries, and legibility at normal and reduced browser zoom. When architecture semantics change, keep the legend, summary cards, and accompanying description consistent with the diagram.
 
 ### Layout Structure
 
