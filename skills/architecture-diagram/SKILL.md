@@ -7,7 +7,7 @@ description: Create polished dark-themed architecture diagrams as self-contained
 
 Create professional technical architecture diagrams as self-contained HTML files with inline SVG graphics and CSS styling.
 
-> **Version 1.1** · MIT License · Authored by [Cocoon AI](mailto:hello@cocoon-ai.com)
+> **Version 2** · Author: [hstarorg](https://github.com/hstarorg) · Original repo: [Cocoon-AI/architecture-diagram-generator](https://github.com/Cocoon-AI/architecture-diagram-generator)
 
 ## Design System
 
